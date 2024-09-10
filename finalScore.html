@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Score</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Connection.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            overflow: hidden; /* Prevent scrollbars from appearing during animation */
+        }
+
+        .score-container {
+            text-align: center;
+            background-color: #000000;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px rgba(245, 245, 245, 0.2);
+            width: 600px;
+            max-width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(225, 11, 11, 0.2);
+        }
+
+        .glitter {
+            font-family: 'Pacifico', cursive;
+            font-size: 130px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(90deg, #ff00cc, #3333ff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glitter 3s ease-in-out infinite;
+        }
+
+        @keyframes glitter {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Confetti CSS */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+            animation: confetti 2s ease-out forwards;
+        }
+
+        @keyframes confetti {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -300%) scale(0.5);
+            }
+        }
+
+        .confetti:nth-child(2n) { background-color: yellow; }
+        .confetti:nth-child(3n) { background-color: blue; }
+        .confetti:nth-child(4n) { background-color: green; }
+        .confetti:nth-child(5n) { background-color: pink; }
+    </style>
+</head>
+<body>
+    <a href="game.html" class="back-button" style="position: absolute; top: 10px; left: 10px; background: #fff; padding: 10px; text-decoration: none; color: #000;">Back</a>
+    <div class="score-container">
+        <h1 style="color: #fff;">Your Final Score</h1>
+        <div id="finalScore" class="glitter"></div>
+    </div>
+
+    <!-- Include the script to retrieve and display the score -->
+    <script>
+        // Retrieve the final score from localStorage and display it
+        let finalScore = localStorage.getItem('finalScore');
+        document.getElementById('finalScore').textContent = `${finalScore} / 50`;
+        
+
+        // Play clapping sound
+        let audio = new Audio('clap.mp3'); // Ensure you have a clapping.mp3 file in the correct directory
+        audio.play();
+
+        // Create confetti effect
+        function createConfetti() {
+            for (let i = 0; i < 20; i++) { // Adjusted to create fewer confetti elements per cycle
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                document.body.appendChild(confetti);
+
+                // Randomize confetti position and animation delay
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `${Math.random() * 100}%`;
+                confetti.style.animationDelay = `${Math.random()}s`;
+
+                // Remove confetti after animation ends
+                confetti.addEventListener('animationend', function() {
+                    confetti.remove();
+                });
+            }
+        }
+
+        // Trigger confetti effect continuously for 5 minutes
+        let duration = 5 * 60 * 1000; // 5 minutes in milliseconds
+        let interval = 500; // Interval between each confetti burst in milliseconds
+        let end = Date.now() + duration;
+
+        function startConfetti() {
+            if (Date.now() < end) {
+                createConfetti();
+                setTimeout(startConfetti, interval);
+            }
+        }
+
+        // Start the confetti effect after displaying the score
+        setTimeout(startConfetti, 500); // Initial delay to sync with score display
+    </script>
+</body>
+</html>

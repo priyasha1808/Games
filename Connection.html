@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Connection.css">
+    <style>
+        /* Additional styling for the Back button */
+        .back-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: larger;
+            font-weight: 700;
+            z-index: 1000; /* Ensure it's on top of other content */
+        }
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <a href="game.html" class="back-button">Back</a>
+    <!-- Full-screen background video -->
+    <div class="video-container">
+        <video id="feedback-videoo" class="full-screen-video" autoplay muted loop>
+            <source id="video-sourcee" src="bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <!-- Game container -->
+    <div class="game-container">
+        <h1>Guess the Connection</h1>
+        <div id="clue-container" class="clue-images">
+            <img id="clue1" src="gray.jpg" alt="Clue 1">
+            <img id="clue2" src="we.jpg" alt="Clue 2">
+            <img id="clue3" src="tea.jpg" alt="Clue 3">
+        </div>
+        <div class="answer-section">
+            <input type="text" id="answer" placeholder="Enter your answer...">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+        <div id="result"></div>
+        <div id="next-round" style="display: none;">
+            <button onclick="nextRound()">Next Round</button>
+        </div>
+
+        <!-- Vertical Video Frame -->
+        <div id="vertical-frame" class="vertical-frame" style="display: none;">
+            <video id="feedback-video" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button id="skipVideoButton" onclick="skipVideo()">Skip Video</button>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div id="popupMessage"></div>
+        <button onclick="closePopup()">Continue</button>
+    </div>
+
+    <!-- Link the JavaScript file -->
+    <script src="Connection.js"></script>
+</body>
+</html>

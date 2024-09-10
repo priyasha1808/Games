@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Guessing Game</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="hangman.css" />
+    
+    <style>
+        /* Additional styling for the Back button */
+        .back-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: larger;
+            font-weight: 700;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #555;
+        }
+
+        /* Centering the title and making it responsive */
+        .head h1 {
+            text-align: center;
+            padding-top: 2%;
+            font-size: 2em;
+            color: #333;
+        }
+
+        /* Styling for the main wrapper */
+        .wrapper {
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the controls container */
+        .controls-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Combined box styling */
+        #combined-box {
+            background-color: #e0f7fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Adjustments for the result text */
+        #result {
+            color: red;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for the word display */
+        #word {
+            font-size: 1.5em;
+            color: #00796b;
+        }
+
+        /* Start button styling */
+        #start {
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        #start:hover {
+            background-color: #008c9e;
+        }
+    </style>
+</head>
+<body>
+    <a href="game.html" class="back-button">Back</a>
+
+    <div class="head">
+        <h1>WORD GUESSING GAME 😎</h1>        
+    </div>
+
+    <div class="wrapper" style="padding: 100px;">
+        <div class="hint-ref"></div>
+        <div id="user-input-section"></div>
+        <div id="message"></div>
+        <div id="letter-container"></div>
+    </div>
+
+    <div class="controls-container">
+        <div id="combined-box">
+            <div id="result"></div>
+            <div id="word"></div>
+        </div>
+        <button id="start">Start</button>
+    </div>
+
+    <!-- Script -->
+    <script src="hangman.js"></script>
+</body>
+</html>

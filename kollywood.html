@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kollywood Quiz Game</title>
+    <link rel="stylesheet" href="kollywood.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kollywood Quiz Game</h1>
+        <div id="game">
+            <p id="question">Guess the Kollywood movie: <span id="description"></span></p>
+            <input type="text" id="answer" placeholder="Enter your answer here...">
+            <input type="button" value="Next Clue" onclick="nextClue()">
+            <button onclick="checkAnswer()">Submit</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+    <script src="kollywood.js"></script>
+</body>
+</html>

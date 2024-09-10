@@ -1,0 +1,187 @@
+/* Glittering effect for correct answer */
+.glitter {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(90deg, #ff00cc, #3333ff);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glitter 3s ease-in-out infinite;
+}
+
+/* Red glittering effect for wrong answer */
+@keyframes redGlitter {
+    0% { background-color: #660000; }
+    50% { background-color: #ff0000; }
+    100% { background-color: #660000; }
+}
+
+/* Popup styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 1000;
+    display: none;
+    background-color: #000;
+    color: #fff;
+}
+
+.popup.correct {
+    animation: glitter 3s ease-in-out infinite;
+}
+
+.popup.wrong {
+    animation: redGlitter 3s ease-in-out infinite;
+}
+
+.popup button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Rest of your CSS */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    position: relative;
+    z-index: 1; /* Ensure it appears above the background video */
+    text-align: center;
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    max-width: 100%;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #af0d33;
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.clue-images {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.clue-images img {
+    width: 190px;
+    height: 190px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.answer-section {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    font-size: 20px;
+    color: #333333;
+}
+
+/* Vertical video frame styling */
+.vertical-frame {
+    position: fixed;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 580px;
+    height: 750px;
+    background-color: black;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.vertical-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#skipVideoButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: rgba(200, 18, 1, 0.8);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: none;
+}
+
+#skipVideoButton:hover {
+    background-color: rgb(243, 234, 140);
+}
+
+/* Full-screen video styling */
+.full-screen-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Game container styles to hide when video is playing */
+.hidden {
+    display: none;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensure the video doesn't cause scrollbars */
+    z-index: -1; /* Ensure it is behind other content */
+}
